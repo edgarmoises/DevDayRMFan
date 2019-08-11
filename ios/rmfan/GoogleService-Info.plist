@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>864925542094-smamm37je0es1tkuo2tvjecv8ik6riaj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.864925542094-smamm37je0es1tkuo2tvjecv8ik6riaj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCzN95fpsF6aIQtP_uss17sxr9PxwyOODA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>864925542094</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.rmfan</string>
+	<key>PROJECT_ID</key>
+	<string>rmfanapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rmfanapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:864925542094:ios:02ec7fa35fdbda8e</string>
+	<key>DATABASE_URL</key>
+	<string>https://rmfanapp.firebaseio.com</string>
+</dict>
+</plist>
