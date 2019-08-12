@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "864925542094",
+    "firebase_url": "https://rmfanapp.firebaseio.com",
+    "project_id": "rmfanapp",
+    "storage_bucket": "rmfanapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864925542094:android:02ec7fa35fdbda8e",
+        "android_client_info": {
+          "package_name": "com.rmfan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864925542094-ngnsq5evsddmrn3bo6ek1qtr3qujg99v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXI7n63e50KaiybwB7Ka787ZY0C48yEjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864925542094-ngnsq5evsddmrn3bo6ek1qtr3qujg99v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "864925542094-smamm37je0es1tkuo2tvjecv8ik6riaj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rmfan"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -62,7 +62,7 @@ export default class LoginScreen extends Component {
                   {
                     this.state.isLoading && <Spinner color='blue' />
                     ||
-                    <Button rounded onPress={this.handleLogin}>
+                    <Button rounded block onPress={this.handleLogin}>
                       <Text style={styles.buttonText}>Ingresar</Text>
                     </Button>
                   }
