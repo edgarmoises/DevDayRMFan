@@ -1,6 +1,8 @@
 import { AsyncStorage } from 'react-native';
+import {db} from './FirebaseClient';
 
 const _userKey = '@rmfanapp:user';
+const _firebaseTokenCollection = 'messaging_tokens';
 
 export const saveUser = async(uid) => {
     try {
@@ -10,7 +12,7 @@ export const saveUser = async(uid) => {
     }
 }
 
-export const getUser = async() => {
+export const getUser = () => {
     return new Promise(async(resolve) => {
         try {
             const user = await AsyncStorage.getItem(_userKey);
@@ -19,4 +21,18 @@ export const getUser = async() => {
             resolve(undefined);
         }
     });
+}
+
+export const saveToken = (uid, token) => {
+    return new Promise(async(resolve) => {
+        try {
+            console.log(token);
+            const actualToken = await db.collection(_firebaseTokenCollection).where('uid', '==', uid).get();
+            if (actualToken.empty) await db.collection(_firebaseTokenCollection).add({ uid, token });
+        } catch(error){
+            console.log(error.message);
+        } finally {
+            resolve();
+        }
+    })
 }

@@ -31,6 +31,7 @@ target 'rmfan' do
   pod 'Firebase/Core', '~> 6.3.0'
   pod 'Firebase/Firestore', '~> 6.3.0'
   pod 'Firebase/Auth', '~> 6.3.0'
+  pod 'Firebase/Messaging', '~> 6.3.0'
 
   target 'rmfanTests' do
     inherit! :search_paths

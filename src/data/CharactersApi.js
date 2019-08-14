@@ -34,9 +34,7 @@ export const saveCharacterToFavorites = async(favorite) => {
       status,
       species,
     });
-    debugger;
   } catch (error) {
-      debugger;
       console.log(error.message);
     return undefined;
   }

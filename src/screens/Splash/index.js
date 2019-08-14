@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 import {Container, Spinner} from 'native-base';
 import {ImageBackground} from 'react-native';
 import styles from './styles';
-import {getUser} from '../../data/UserRepository';
+import {getUser, saveToken} from '../../data/UserRepository';
+import {messaging} from '../../data/FirebaseClient';
 
 export default class SplashScreen extends Component {
-  componentDidMount() {
-      this.handleLogin();
+  async componentDidMount() {
+      await this.handleMessagingToken();
+      await this.handleLogin();
+  }
+
+  handleMessagingToken = async() => {
+    const fcmToken = await messaging.getToken();
+      const user = await getUser();
+      if(fcmToken && user) {
+        await saveToken(user, fcmToken);
+      }
   }
 
   handleLogin = async() => {
