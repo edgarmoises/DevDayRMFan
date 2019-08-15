@@ -29,6 +29,20 @@ export const getAllCharacters = (page) => {
   });
 };
 
+export const isCharacterFavorite = (uid, characterId) => {
+  return new Promise(async (resolve) => {
+    try {
+      const isFavorite = await db.collection(_fireStoreCollection)
+                          .where('uid', '==', uid)
+                          .where('characterId', '==', characterId)
+                          .get();
+      resolve(!isFavorite.empty);
+    } catch(error) {
+      resolve();
+    }
+  });
+}
+
 export const saveCharacterToFavorites = async(favorite) => {
   try {
     const {uid, id, image, name, status, species} = favorite;

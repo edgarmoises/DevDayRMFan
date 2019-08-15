@@ -27,7 +27,6 @@ export default class CaractersScreen extends Component {
   }
 
   requestCharacters = () => {
-    debugger;
     const { currentPage, next, pages } = this.state;
     if (currentPage !== pages) {
       this.setState({
