@@ -5,17 +5,23 @@ const _baseUrl = 'https://rickandmortyapi.com/api';
 const _fireStoreCollection = 'favorites';
 let _dbRef = undefined;
 
-export const getAllCharacters = () => {
+export const getAllCharacters = (page) => {
   return new Promise (resolve => {
     axios
-      .get (`${_baseUrl}/character/`)
+      .get (`${_baseUrl}/character/?page=${page}`)
       .then (response => {
+        const { data } = response;
+        const characters = data.results.map(character => {
+          return {...character, characterId: character.id}
+        });
         resolve({
-          characters: response.data.results,
-          info: response.data.info,
+          characters,
+          next: data.info.next,
+          pages: data.info.pages
         });
       })
       .catch(error => {
+        debugger;
         resolve ({
           characters: [],
         });

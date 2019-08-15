@@ -1,28 +1,54 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { Container, Text } from 'native-base';
 import {getAllCharacters} from '../../data/CharactersApi';
-import CharecterDetails from '../../components/CharacterItem';
+import CharactersList from '../../components/CharactersList';
 
 export default class CaractersScreen extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      characters: []
+      characters: [],
+      currentPage: 1,
+      next: undefined,
+      pages: 0
     }
   }
 
   componentDidMount() {
-    getAllCharacters()
+    getAllCharacters(this.state.currentPage)
     .then(response => {
       this.setState({
-        characters: response.characters
+        characters: response.characters,
+        currentPage: this.state.currentPage = 1,
+        next: response.next,
+        pages: response.pages
       });
     });
   }
 
-  chareacterPressed = character => {
+  requestCharacters = () => {
+    debugger;
+    const { currentPage, next, pages } = this.state;
+    if (currentPage !== pages) {
+      this.setState({
+        currentPage: this.state.currentPage + 1,
+      }, () => {
+        getAllCharacters(this.state.currentPage)
+        .then(response => {
+          this.setState({
+            characters: this.state.characters.concat(response.characters),
+            next: response,next,
+            pages: response.pages
+          });
+        }).catch(error => {
+          debugger;
+          console.log(error.message)
+        });
+      })
+    }
+  }
+
+  itemPressed = character => {
     this.props.navigation.navigate('CharacterDetails', {
       id: character.id,
       image: character.image,
@@ -33,27 +59,13 @@ export default class CaractersScreen extends Component {
   }
 
   render() {
+    const { characters } = this.state;
     return (
-      <Container>
-        <FlatList 
-          data={this.state.characters}
-          keyExtractor = {character => {
-            return character.id.toString()
-          }}
-          renderItem={characterDetails => {
-            return <CharecterDetails styles={styles.item} character={characterDetails.item} onPress={this.chareacterPressed} />
-          }}
-          
-        />
-      </Container>
+      <CharactersList 
+        characters={characters} 
+        itemPressCallback={this.itemPressed} 
+        endReachedCallback={this.requestCharacters} 
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44
-  }
-})
