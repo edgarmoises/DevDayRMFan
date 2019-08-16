@@ -11,6 +11,6 @@ export const loginUser = (email, password) => {
 export const signupUser = (email, password) => {
     return new Promise(resolve => {
         auth.createUserWithEmailAndPassword(email, password)
-        .then(data => resolve({success: true, data: data.user}));
+        .then(data => resolve(data.user));
     });
 }

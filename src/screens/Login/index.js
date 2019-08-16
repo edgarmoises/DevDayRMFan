@@ -16,7 +16,6 @@ export default class LoginScreen extends Component {
   }
 
   loginUser = async(uid) => {
-    debugger;
     await saveUser(uid);
     await this.props.navigation.navigate('Home');
   }
@@ -28,14 +27,12 @@ export default class LoginScreen extends Component {
 
     loginUser(email, password)
     .then(data => {
-      debugger;
       this.loginUser(data.uid);
     })
     .catch(() =>{
-      debugger;
       signupUser(email, password)
-      .then(() => {
-        
+      .then(data => {
+        this.loginUser(data.uid);
       })
       .catch(() => {
         this.setState({isLoading: false});

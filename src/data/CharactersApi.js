@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { db } from './FirebaseClient';
+import {getUser} from './UserRepository';
 
 const _baseUrl = 'https://rickandmortyapi.com/api';
 const _fireStoreCollection = 'favorites';
-let _dbRef = undefined;
 
 export const getAllCharacters = (page) => {
   return new Promise (resolve => {
@@ -59,9 +59,10 @@ export const saveCharacterToFavorites = async(favorite) => {
   }
 };
 
-export const getFavoritesCharacters = async(uid) => {
+export const getFavoritesCharacters = async() => {
   return new Promise(async(resolve) => {
     try {
+      const uid = await getUser();
       const favoritesQuery = await db.collection(_fireStoreCollection).where('uid', '==', uid).get();
       const favorites = parseFavorites(favoritesQuery);
       resolve(favorites);
@@ -75,7 +76,8 @@ export const parseFavorites = data => {
   return data.docs.map(doc => doc.data());
 }
 
-export const subscribeToUpdates = updateCallback => {
-  if (!_dbRef) _dbRef = db.collection(_fireStoreCollection);
-  _dbRef.onSnapshot(updateCallback); 
+export const subscribeToUpdates = async updateCallback => {
+  const uid = await getUser();
+  const dbRef = db.collection(_fireStoreCollection).where('uid', '==', uid);
+  dbRef.onSnapshot(updateCallback); 
 }

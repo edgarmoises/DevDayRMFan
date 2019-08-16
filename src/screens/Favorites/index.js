@@ -29,11 +29,9 @@ export default class FavoritesScreen extends Component {
         isLoading: true,
       },
       () => {
-        getUser ().then (uid => {
-          getFavoritesCharacters (uid).then (favorites =>
-            this.setState ({isLoading: false, favorites: favorites})
-          );
-        });
+        getFavoritesCharacters ().then (favorites =>
+          this.setState ({isLoading: false, favorites: favorites})
+        );
       }
     );
   };
