@@ -79,11 +79,3 @@ export const subscribeToUpdates = updateCallback => {
   if (!_dbRef) _dbRef = db.collection(_fireStoreCollection);
   _dbRef.onSnapshot(updateCallback); 
 }
-
-export const unsuscribeToUpdates = () => {
-  if(_dbRef) {
-    debugger;
-    _dbRef();
-    _dbRef = undefined;
-  }
-}

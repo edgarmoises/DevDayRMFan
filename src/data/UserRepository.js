@@ -36,3 +36,15 @@ export const saveToken = (uid, token) => {
         }
     })
 }
+
+export const logoutUser = () => {
+    return new Promise(async resolve => {
+        try {
+            await AsyncStorage.removeItem(_userKey);
+        } catch(error) {
+            console.log(error);
+        } finally {
+            resolve();
+        }
+    })
+}

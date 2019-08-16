@@ -3,7 +3,6 @@ import {Text, Container} from 'native-base';
 import {
   getFavoritesCharacters,
   subscribeToUpdates,
-  unsuscribeToUpdates,
   parseFavorites,
 } from '../../data/CharactersApi';
 import {getUser} from '../../data/UserRepository';
@@ -22,10 +21,6 @@ export default class FavoritesScreen extends Component {
   componentDidMount () {
     subscribeToUpdates (this.onFavoritesUpdate);
     this.requestFavorites ();
-  }
-
-  componentWillUnmount () {
-    unsuscribeToUpdates ();
   }
 
   requestFavorites = () => {

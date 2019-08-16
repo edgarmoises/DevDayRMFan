@@ -11,6 +11,7 @@ import CharactersScreen from './Characters';
 import FavoritesScreen from './Favorites';
 import SplashScreen from './Splash';
 import CharaterDetailsScreen from './CharacterDetails';
+import ProfileScreen from './Profile';
 
 const AuthStack = createStackNavigator ({
   Login: LoginScreen,
@@ -20,6 +21,7 @@ const TabStack = createBottomTabNavigator (
   {
     Characters: CharactersScreen,
     Favorites: FavoritesScreen,
+    Profile: ProfileScreen
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -27,13 +29,18 @@ const TabStack = createBottomTabNavigator (
         const {routeName} = navigation.state;
         let IconComponent = Ionicons;
         let iconName;
-        if (routeName === 'Characters') {
-          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-        } else if (routeName === 'Favorites') {
-          iconName = `ios-options`;
+        switch(routeName) {
+          case 'Characters':
+              iconName = 'md-list';
+              break;
+          case 'Favorites':
+              iconName = 'ios-heart';
+              break;
+          case 'Profile':
+              iconName = 'ios-contact';
+              break;
         }
 
-        // You can return any component that you like here!
         return <IconComponent name={iconName} size={25} color={tintColor} />;
       },
     }),
