@@ -16,7 +16,6 @@ export const getAllCharacters = (page) => {
         });
         resolve({
           characters,
-          next: data.info.next,
           pages: data.info.pages
         });
       })

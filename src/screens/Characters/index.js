@@ -1,42 +1,35 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import {getAllCharacters} from '../../data/CharactersApi';
-import CharactersList from '../../components/CharactersList';
+import PaginationList from '../../components/PaginationList';
 
 export default class CaractersScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       characters: [],
-      currentPage: 1,
-      next: undefined,
+      currentPage: 0,
       pages: 0
     }
   }
 
   componentDidMount() {
-    getAllCharacters(this.state.currentPage)
-    .then(response => {
-      this.setState({
-        characters: response.characters,
-        currentPage: this.state.currentPage = 1,
-        next: response.next,
-        pages: response.pages
-      });
-    });
+    this.requestCharacters();
   }
 
   requestCharacters = () => {
-    const { currentPage, next, pages } = this.state;
-    if (currentPage !== pages) {
+    const { currentPage, pages } = this.state;
+    if (currentPage <= pages) {
       this.setState({
         currentPage: this.state.currentPage + 1,
+        isLoading: true
       }, () => {
         getAllCharacters(this.state.currentPage)
         .then(response => {
           this.setState({
+            isLoading: false,
             characters: this.state.characters.concat(response.characters),
-            next: response,next,
             pages: response.pages
           });
         }).catch(error => {
@@ -58,9 +51,10 @@ export default class CaractersScreen extends Component {
   }
 
   render() {
-    const { characters } = this.state;
+    const { isLoading, characters } = this.state;
     return (
-      <CharactersList 
+      <PaginationList 
+        isLoading={isLoading}
         characters={characters} 
         itemPressCallback={this.itemPressed} 
         endReachedCallback={this.requestCharacters} 

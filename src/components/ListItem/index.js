@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 
-export default class CharacterItem extends Component {
+export default class ListItem extends Component {
   onPress = () => {
       this.props.onPress(this.props.character);
   };
