@@ -47,7 +47,7 @@ export default class FavoritesScreen extends Component {
 
   itemPressed = character => {
     this.props.navigation.navigate ('CharacterDetails', {
-      id: character.id,
+      id: character.characterId,
       image: character.image,
       name: character.name,
       status: character.status,
