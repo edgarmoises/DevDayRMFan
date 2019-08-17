@@ -12,16 +12,31 @@ import FavoritesScreen from './Favorites';
 import SplashScreen from './Splash';
 import CharaterDetailsScreen from './CharacterDetails';
 import ProfileScreen from './Profile';
+import colors from '../../res/colors';
 
-const AuthStack = createStackNavigator ({
-  Login: LoginScreen,
-});
+const AuthStack = createStackNavigator (
+  {
+    Login: LoginScreen,
+  },
+  {
+    defaultNavigationOptions: {
+      headerTitle: 'Login',
+      headerStyle: {
+        backgroundColor: colors.secondaryColor,
+      },
+      headerTintColor: colors.white,
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
 
 const TabStack = createBottomTabNavigator (
   {
     Characters: CharactersScreen,
     Favorites: FavoritesScreen,
-    Profile: ProfileScreen
+    Profile: ProfileScreen,
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -29,16 +44,16 @@ const TabStack = createBottomTabNavigator (
         const {routeName} = navigation.state;
         let IconComponent = Ionicons;
         let iconName;
-        switch(routeName) {
+        switch (routeName) {
           case 'Characters':
-              iconName = 'md-list';
-              break;
+            iconName = 'md-list';
+            break;
           case 'Favorites':
-              iconName = 'ios-heart';
-              break;
+            iconName = 'ios-heart';
+            break;
           case 'Profile':
-              iconName = 'ios-contact';
-              break;
+            iconName = 'ios-contact';
+            break;
         }
 
         return <IconComponent name={iconName} size={25} color={tintColor} />;
@@ -51,14 +66,28 @@ const TabStack = createBottomTabNavigator (
   }
 );
 
-const HomeStack = createStackNavigator ({
-  BottomTabs: {
-    screen: TabStack,
+const HomeStack = createStackNavigator (
+  {
+    BottomTabs: {
+      screen: TabStack,
+    },
+    CharacterDetails: {
+      screen: CharaterDetailsScreen,
+    },
   },
-  CharacterDetails: {
-    screen: CharaterDetailsScreen,
-  },
-});
+  {
+    defaultNavigationOptions: {
+      headerTitle: 'Rick And Morty Fan App',
+      headerStyle: {
+        backgroundColor: colors.secondaryColor,
+      },
+      headerTintColor: colors.white,
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
 
 export default createAppContainer (
   createSwitchNavigator (
