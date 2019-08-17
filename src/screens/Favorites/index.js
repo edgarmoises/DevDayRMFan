@@ -58,7 +58,7 @@ export default class FavoritesScreen extends Component {
   renderEmptyMessage = () => {
     return (
       <Container style={styles.container}>
-        <Text>There is no favorites :(</Text>
+        <Text style={styles.emptyText}>There is no favorites :(</Text>
       </Container>
     );
   };

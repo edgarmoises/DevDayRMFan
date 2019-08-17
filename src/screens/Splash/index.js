@@ -30,7 +30,7 @@ export default class SplashScreen extends Component {
     return (
       <Container>
           <ImageBackground source={require('../../../res/images/1.jpg')} style={styles.backgroundImage}>
-              <Spinner color='white' />
+              <Spinner color={styles.spinner.color} />
           </ImageBackground>
       </Container>
     );

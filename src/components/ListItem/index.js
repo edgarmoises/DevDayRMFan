@@ -19,6 +19,7 @@ export default class ListItem extends Component {
             <Text style={styles.originText}>
               {`Status: ${this.props.character.status}`}
             </Text>
+            <View  style={styles.separator}/>
           </View>
           <View style={styles.arrowContainer}>
             <Ionicons name='ios-arrow-forward' size={30} color={styles.arrow.color} />

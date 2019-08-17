@@ -25,8 +25,6 @@ export default class PaginationList extends Component {
           renderItem={characterDetails => {
             return (
               <ListItem
-                styles={styles.item}
-                textStyles={styles.itemText}
                 character={characterDetails.item}
                 onPress={this.onCharacterPressed}
               />

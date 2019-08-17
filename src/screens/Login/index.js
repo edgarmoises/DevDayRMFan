@@ -15,12 +15,6 @@ import {loginUser, signupUser} from '../../data/LoginApi';
 import {saveUser} from '../../data/UserRepository';
 
 export default class LoginScreen extends Component {
-  // static navigationOptions = {
-  //   title: 'Login',
-  //   headerStyle: styles.toolbar,
-  //   headerTintColor: styles.toolbar.color,
-  // };
-
   constructor (props) {
     super (props);
     this.state = {

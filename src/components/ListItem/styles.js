@@ -29,5 +29,11 @@ export default StyleSheet.create ({
   },
   arrow: {
       color: colors.accentColor
+  },
+  separator: {
+      height: 0.3,
+      backgroundColor: colors.accentColor,
+      marginTop: 5,
+      marginBottom: 8,
   }
 });

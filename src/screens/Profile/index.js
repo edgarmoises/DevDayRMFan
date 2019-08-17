@@ -12,8 +12,8 @@ export default class ProfileScreen extends Component {
   render () {
     return (
       <Container style={styles.container}>
-        <Button onPress={this.logoutUser}>
-          <Text>
+        <Button rounded block style={styles.button} onPress={this.logoutUser}>
+          <Text style={styles.buttonText}>
             Logout
           </Text>
         </Button>
