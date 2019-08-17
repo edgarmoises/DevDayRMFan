@@ -16,7 +16,7 @@ export default class PaginationList extends Component {
   render () {
     const {isLoading, characters} = this.props;
     return (
-      <Container>
+      <Container style={styles.container}>
         <FlatList
           data={characters}
           keyExtractor={character => {
@@ -26,6 +26,7 @@ export default class PaginationList extends Component {
             return (
               <ListItem
                 styles={styles.item}
+                textStyles={styles.itemText}
                 character={characterDetails.item}
                 onPress={this.onCharacterPressed}
               />
